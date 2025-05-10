@@ -110,4 +110,13 @@
         width: 86vw;
         margin-left: 10px;
     }
+
+    .entry_animation{
+        width: 100vw;
+        height: 100vh;
+        font-size: 4rem;
+        padding-left: 20px;
+        
+        
+    }
 }

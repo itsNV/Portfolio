@@ -26,7 +26,7 @@ function App() {
       {
         welcome ?
           
-          (<div className='flex items-center text-[7rem] h-screen w-screen justify-center '> 
+          (<div className='entry_animation flex items-center text-[7rem] lg:h-screen lg:w-screen justify-center '> 
             
             <AnimatedBackground
                 animationName="starryNight"
