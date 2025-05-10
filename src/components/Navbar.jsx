@@ -52,7 +52,7 @@ const Navbar = () => {
           Major Projects
         </li>
 
-        <li className={`three_dot cursor-pointer opacity-0 flex flex-col items-center w-[10%] ml-3`}>
+        <li className={`three_dot cursor-pointer opacity-0 flex flex-col items-center w-[10%]`}>
                   <VscThreeBars
                       className={`${show && 'mt-56'}`}
                       onClick={() => setShow((pre) => !pre)} />
