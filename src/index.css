@@ -2,3 +2,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@media screen and (max-width:850px) {
+    .navItem{
+        display: none;
+    }
+
+    .main{
+        width: 100vw;
+        /* align-items: center; */
+        margin-left: 30px;
+        
+    }
+
+    #intro{
+        display: flex;
+        
+    }
+
+    .name{
+        /* font-size: larger */
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .description{
+        /* font-size: small; */
+        width: 90vw;
+    }
+
+    .project_btn{
+        justify-self: center;
+    }
+
+    #experience{
+        width: 92vw;
+    }
+
+    #skills{
+        width: 92vw;
+    }
+
+    .skill_section{
+        /* margin-left: 10px; */
+        justify-self: center;
+        gap: 20px;
+        width: 50%;
+        
+    }
+
+    .skill_subsection{
+        margin-top:2px;
+        flex-direction: column;
+    }
+
+    .skill_name{
+        flex-direction: column;
+        justify-self: center;
+        
+    }
+
+    .skill_divide{
+        display: flex;
+        justify-self: center;
+       
+    }
+
+    #contact{
+        width: 92vw;
+    }
+
+    .contact_img{
+        width: 30px;
+    }
+}

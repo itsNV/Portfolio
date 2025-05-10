@@ -9,18 +9,18 @@ const Navbar = () => {
       <div className='text-white bg-black w-full h-24 shadow-lg shadow-blue-900 flex items-center'>
           <ul className='flex mx-auto justify-evenly w-[70%] items-center font-semibold uppercase'>
               <AnchorLink href='#experience'>
-              <li className='cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
+              <li className='navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
                   Experience
               </li>
               </AnchorLink>
 
               <li>
-                  <div className='bg-blue-700 w-1 h-1 rounded-full '></div>
+                  <div className='navItem bg-blue-700 w-1 h-1 rounded-full '></div>
               </li>
 
               <AnchorLink href='#skills'>
               <li
-                  className='cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
+                  className='navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
                   Skills
               </li>
               </AnchorLink>
@@ -33,18 +33,18 @@ const Navbar = () => {
 
               
               <AnchorLink href='#contact'>
-              <li className='cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
+              <li className='navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
                   Contact
               </li>
              </AnchorLink>
 
               <li>
-                  <div className='bg-blue-700 w-1 h-1 rounded-full '></div>
+                  <div className='navItem bg-blue-700 w-1 h-1 rounded-full '></div>
               </li>
 
               <li
                   onClick={()=> navigate("/major-projects")}
-                  className='cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
+                  className='navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text'>
                   Major Projects
               </li>
           </ul>

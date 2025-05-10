@@ -13,7 +13,7 @@ const Main = () => {
       <>
           <Navbar/>
           
-          <div className="text-white w-[60%] mt-48 h-full font-serif pb-20">
+          <div className="main text-white lg:w-[60%] mt-48 h-full font-serif pb-20 flex flex-col flex-wrap">
           
           {/* section1 */}
     
@@ -29,11 +29,11 @@ const Main = () => {
                 </span>
               </p>
     
-              <p className="text-white text-[6rem] font-bold uppercase">
+              <p className="name text-white text-[6rem] font-bold uppercase">
                 Nisarg Patel
               </p>
     
-              <p className="text-xl">
+              <p className="description text-xl">
                 I am full ( MERN ) stack developer skilled to build the working
                 websites. And as roll of front-end developer i can create responsive
                 apps using <span className="text-lime-300"> Reactjs</span> and can
@@ -47,7 +47,7 @@ const Main = () => {
     
                       <button
                           onClick={()=> navigate('/projects')}
-                          className="text-black bg-yellow-400 px-5 py-2 flex items-center rounded-lg hover:rounded-full hover:scale-110 transition-all duration-200 ease-in hover:text-white mt-5 hover:bg-blue-600"> My Projects</button>
+                          className="project_btn text-black bg-yellow-400 px-5 py-2 flex items-center rounded-lg hover:rounded-full hover:scale-110 transition-all duration-200 ease-in hover:text-white mt-5 hover:bg-blue-600"> My Projects</button>
             </div>
           </section>
     
@@ -95,7 +95,7 @@ const Main = () => {
     
                           <NavLink to={'https://github.com/itsNV'}>
                 <p className="text-blue-400 flex items-center gap-3">
-                  <img src={githubimg} alt="github image" className="w-[3%] rounded-lg"/>
+                  <img src={githubimg} alt="github image" className="contact_img w-[3%] rounded-lg"/>
                               Github
                           </p>
                           </NavLink>
@@ -103,7 +103,7 @@ const Main = () => {
     
                           <NavLink to={'https://www.linkedin.com/in/nisarg-patel-865aa9287/'}>
                 <p className="text-blue-400 flex items-center gap-3">
-                  <img src={linkedinimg} alt="linkedin image" className="w-[3%] rounded-full"/>
+                  <img src={linkedinimg} alt="linkedin image" className="contact_img w-[3%] rounded-full"/>
                               Linkedin 
                           </p>
                           </NavLink>
