@@ -29,15 +29,15 @@ const MajorProject = () => {
             <div className="text-white w-full h-auto font-serif flex justify-center mt-28 mb-20">
 
 
-                <div className="h-auto w-[50%] bg-gradient-to-r from-blue-900 to-black rounded-lg shadow-md shadow-white">
+                <div className="major_project h-auto w-[50%] bg-gradient-to-r from-blue-900 to-black rounded-lg shadow-md shadow-white">
 
                     <p className="text-[3rem] mt-10 text-center font-semibold">Insight-Institute | An-EdTech Plateform</p>
 
 
 
-                    <p className="text-start ml-4 mt-10 text-lg">Introduction : </p>
+                    <p className="text-start lg:ml-4 mt-10 text-lg">Introduction : </p>
 
-                    <p className="ml-36 mt-4 w-[70%]">The Project “Insight-Institute” is an ed-tech platform where people can enroll in courses and
+                    <p className="major_project_desc lg:ml-36 mt-4 w-[70%]">The Project “Insight-Institute” is an ed-tech platform where people can enroll in courses and
 can learn new skills online from anywhere.
 This Ed-Tech project is designed to make learning easier, more fun, and accessible for everyone.
 The platform includes interactive videos and documentations on the particular topic. Teachers
@@ -47,10 +47,10 @@ or at home. This project helps bridge learning gaps and improve education with s
                         tools. </p>
                     
 
-                    <p className="text-start ml-4 mt-10 text-lg">Some Images of Website : "Insight-Institute"</p>
+                    <p className="text-start lg:ml-4 mt-10 text-lg">Some Images of Website : "Insight-Institute"</p>
 
 
-                    <div className="ml-4 mt-4 mb-4 flex flex-col gap-6">
+                    <div className="lg:ml-4 mt-4 mb-4 flex flex-col gap-6">
                         <div className="flex flex-col gap-4">
                             <p className="">Home Page : </p>
                             <img src={homeimg} alt="Home page Image" className="rounded-lg w-[70%]"/>
@@ -81,7 +81,7 @@ or at home. This project helps bridge learning gaps and improve education with s
                         </div>
                     </div>
 
-                    <div className="ml-4 mb-10 mt-20">
+                    <div className="lg:ml-4 mb-10 mt-20">
                     <p >For learn more about it please click </p>
                     <NavLink to={process.env.REACT_APP_MAJOR_PROJECT_LINK}>
             <button

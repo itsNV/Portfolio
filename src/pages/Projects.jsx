@@ -21,7 +21,7 @@ const Projects = () => {
       
       <p className='text-[3rem] text-center mt-20 text-white font-serif'>My Projects</p>
       
-      <div className='text-white mt-20 grid grid-cols-2 w-[60%] gap-7  mb-10 font-serif'>
+      <div className='projects text-white mt-20 grid lg:grid-cols-2 w-[60%] lg:gap-7  mb-10 font-serif'>
 
 
       

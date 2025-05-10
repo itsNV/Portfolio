@@ -82,4 +82,32 @@
     .contact_details{
         align-items: center;
     }
+
+
+    .projects{
+        grid-auto-columns: 1;
+        align-items: center;
+        width: 92vw;
+        gap: 50px;
+    }
+
+    .three_dot{
+        opacity: 100;
+        
+    }
+
+    .navbar{
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .major_project{
+        width: 92vw;
+        padding-left: 10px;
+    }
+
+    .major_project_desc{
+        width: 86vw;
+        margin-left: 10px;
+    }
 }
