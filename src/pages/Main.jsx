@@ -81,7 +81,7 @@ const Main = () => {
                   <p className="text-white  text-center text-[3rem] font-semibold pt-20 mb-20">Contact</p>
                   
     
-                  <div className="text-xl ml-20 flex flex-col">
+                  <div className="contact_details text-xl lg:ml-20 flex flex-col">
                       
                       <p>Connect with me using : </p>
     

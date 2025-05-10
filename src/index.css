@@ -24,14 +24,14 @@
 
     .name{
         /* font-size: larger */
-        width: 100vw;
-        display: flex;
-        flex-wrap: wrap;
+        width: 92vw;
+        font-size: 5rem;
+        
     }
 
     .description{
         /* font-size: small; */
-        width: 90vw;
+        width: 92vw;
     }
 
     .project_btn{
@@ -50,7 +50,7 @@
         /* margin-left: 10px; */
         justify-self: center;
         gap: 20px;
-        width: 50%;
+        width: 70%;
         
     }
 
@@ -77,5 +77,9 @@
 
     .contact_img{
         width: 30px;
+    }
+
+    .contact_details{
+        align-items: center;
     }
 }
