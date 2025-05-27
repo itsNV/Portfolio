@@ -5,6 +5,8 @@ import './App.css';
 import Main from './pages/Main';
 import Projects from './pages/Projects';
 import MajorProject from './pages/MajorProject';
+import InsightInstitute from './components/MajorProject/InsightInstitute';
+import ChatApp from './components/MajorProject/ChatApp';
 
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
         <Route path='/' element={ <Main/>} />
                 <Route path='projects' element={<Projects />} />
                 <Route path='major-projects' element={ <MajorProject/>} />
+                <Route path='major-projects/insight-institute' element={ <InsightInstitute/>} />
+                <Route path='major-projects/chat-app' element={ <ChatApp/>} />
       </Routes>
           
           </div>
