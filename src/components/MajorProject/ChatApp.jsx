@@ -66,7 +66,7 @@ const ChatApp = () => {
 
                     <div className="lg:ml-4 mb-10 mt-20">
                     <p >To learn more about it please click </p>
-                    <NavLink to={process.env.REACT_APP_MAJOR_PROJECT_LINK}>
+                    <NavLink to={process.env.REACT_APP_CHAT_APP_LINK}>
             <button
               
               className='mt-3 h-[2rem] w-[7rem] bg-black px-2 py-2 rounded-lg hover:scale-110 transition-all duration-200 hover:bg-gradient-to-tr hover:from-black  hover:to-red-600 flex items-center justify-center  hover:border-black hover:shadow-sm hover:shadow-white'
