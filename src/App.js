@@ -1,70 +1,47 @@
-import { AnimatedBackground, AnimatedText } from 'animated-backgrounds';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import Main from './pages/Main';
-import Projects from './pages/Projects';
-import MajorProject from './pages/MajorProject';
-import InsightInstitute from './components/MajorProject/InsightInstitute';
-import ChatApp from './components/MajorProject/ChatApp';
+import About from './components/Main/About.jsx';
+import Contact from './components/Main/Contact.jsx';
+import Experience from './components/Main/Experience.jsx';
+import Hero from './components/Main/Hero.jsx';
+import MajorProjects from './components/Main/projects.jsx';
+import Skills from './components/Main/Skills.jsx';
+import ChatApp from './components/MajorProject/ChatApp.jsx';
+import InsightInstitute from './components/MajorProject/InsightInstitute.jsx';
+import Navbar from './components/Navbar.jsx';
+import './index.css';
+import Projects from './pages/Projects.jsx';
 
-
-function App() {
-
-
-  const [welcome, setWelcome] = useState(true)
-  
-
-  useEffect(() => {
-    setTimeout(() => {
-      setWelcome(false)
-    },3000)
-  },[])
-
+const App = () => {
   return (
-    <div>
-
-            
-      {
-        welcome ?
-          
-          (<div className='entry_animation flex items-center text-[7rem] lg:h-screen lg:w-screen justify-center '> 
-            
-            <AnimatedBackground
-                animationName="starryNight"
-                blendMode="difference"
-            />
-            
-            <AnimatedText
-            text="Welcome to my Portfolio"
-            effect="rainbow"
-            />
-          </div>)
-            : (
-          
-            <div className='flex flex-col items-center bg-gradient-to-r from-black to-blue-950'>
+    <div className="min-h-screen bg-[#0f172a] text-white">
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <About />
+              <Experience />
+              <Skills />
               
-             
-
-          
+              <Contact />
+            </>
+          }
+        />
       
-          <Routes>
-        <Route path='/' element={ <Main/>} />
-                <Route path='projects' element={<Projects />} />
-                <Route path='major-projects' element={ <MajorProject/>} />
-                <Route path='major-projects/insight-institute' element={ <InsightInstitute/>} />
-                <Route path='major-projects/chat-app' element={ <ChatApp/>} />
+        <Route
+          path="/projects"
+          element={
+            <Projects />
+          }
+        />
+
+        <Route path='/major-projects' element={<MajorProjects/>} />
+        <Route path='/major-projects/insight-institute' element={<InsightInstitute/>} />
+        <Route path='/major-projects/chat-app' element={<ChatApp/>} />
       </Routes>
-          
-          </div>
-        )
-      }
-      
-
-
-
-      
-      
     </div>
   );
 }

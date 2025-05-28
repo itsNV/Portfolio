@@ -1,95 +1,144 @@
-import React, { useState } from "react";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { HiMenuAlt4 } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { VscThreeBars } from "react-icons/vsc";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrolled]);
+
+  const navItems = [
+    { title: "About", href: "#about" },
+    { title: "Experience", href: "#experience" },
+    { title: "Skills", href: "#skills" },
+    { title: "Contact", href: "#contact" },
+    { title: "Major Projects", href: "/major-projects", isRoute: true },
+  ];
+
   return (
-    <div className="text-white bg-black w-full h-24 shadow-lg shadow-blue-900 flex items-center">
-      <ul className="navbar flex mx-auto justify-evenly w-[70%] items-center font-semibold uppercase">
-        <AnchorLink href="#experience">
-          <li className="navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-            Experience
-          </li>
-        </AnchorLink>
-
-        <li>
-          <div className="navItem bg-blue-700 w-1 h-1 rounded-full "></div>
-        </li>
-
-        <AnchorLink href="#skills">
-          <li className="navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-            Skills
-          </li>
-        </AnchorLink>
-
-        <li>
-          <p
-            onClick={() => navigate("/")}
-            className="text-[2rem] cursor-pointer"
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-opacity-80 backdrop-blur-lg bg-[#0f172a] shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-shrink-0"
           >
-            Nisarg Patel
-          </p>
-        </li>
+            <h1
+              onClick={() => navigate("/")}
+              className="cursor-pointer text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text hover:from-purple-600 hover:to-blue-400 transition-all duration-300"
+            >
+              Nisarg Patel
+            </h1>
+          </motion.div>
 
-        <AnchorLink href="#contact">
-          <li className="navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-            Contact
-          </li>
-        </AnchorLink>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item, index) => (
+              <React.Fragment key={item.title}>
+                {item.isRoute ? (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate(item.href)}
+                    className="nav-link relative text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                  >
+                    {item.title}
+                  </motion.button>
+                ) : (
+                  <AnchorLink href={item.href}>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="nav-link relative text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                    >
+                      {item.title}
+                    </motion.button>
+                  </AnchorLink>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
 
-        <li>
-          <div className="navItem bg-blue-700 w-1 h-1 rounded-full "></div>
-        </li>
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShow(!show)}
+              className="text-gray-300 hover:text-white p-2"
+            >
+              {show ? (
+                <IoClose className="h-6 w-6" />
+              ) : (
+                <HiMenuAlt4 className="h-6 w-6" />
+              )}
+            </motion.button>
+          </div>
+        </div>
+      </div>
 
-        <li
-          onClick={() => navigate("/major-projects")}
-          className="navItem cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text"
-        >
-          Major Projects
-        </li>
-
-        <li className={`three_dot cursor-pointer opacity-0 flex flex-col items-center w-[10%]`}>
-                  <VscThreeBars
-                      className={`${show && 'mt-56'}`}
-                      onClick={() => setShow((pre) => !pre)} />
-
-          {show && (
-            <div>
-              <ul className="flex flex-col gap-3 mt-10 bg-white rounded-lg p-3 text-black">
-                <AnchorLink href="#experience">
-                  <li className=" cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-                    Experience
-                  </li>
-                </AnchorLink>
-
-                <AnchorLink href="#skills">
-                  <li className=" cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-                    Skills
-                  </li>
-                </AnchorLink>
-
-                <AnchorLink href="#contact">
-                  <li className=" cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text">
-                    Contact
-                  </li>
-                </AnchorLink>
-
-                <li
-                  onClick={() => navigate("/major-projects")}
-                  className="cursor-pointer hover:bg-gradient-to-r hover:from-blue-800 hover:to-red-800 hover:text-transparent hover:bg-clip-text"
+      {/* Mobile Menu */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: show ? 1 : 0, y: show ? 0 : -20 }}
+        transition={{ duration: 0.2 }}
+        className={`${
+          show ? "block" : "hidden"
+        } md:hidden bg-[#0f172a] bg-opacity-95 backdrop-blur-lg`}
+      >
+        <div className="px-4 pt-2 pb-4 space-y-2">
+          {navItems.map((item) => (
+            <div key={item.title} className="block">
+              {item.isRoute ? (
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    navigate(item.href);
+                    setShow(false);
+                  }}
+                  className="w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors duration-200"
                 >
-                  Major Projects
-                </li>
-              </ul>
+                  {item.title}
+                </motion.button>
+              ) : (
+                <AnchorLink href={item.href} onClick={() => setShow(false)}>
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors duration-200"
+                  >
+                    {item.title}
+                  </motion.button>
+                </AnchorLink>
+              )}
             </div>
-          )}
-        </li>
-      </ul>
-    </div>
+          ))}
+        </div>
+      </motion.div>
+    </motion.nav>
   );
 };
 

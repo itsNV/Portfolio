@@ -1,17 +1,26 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import { FaArrowLeftLong, FaGithub } from 'react-icons/fa6';
-import { FiExternalLink } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
-import { projectData } from '../data';
+import React from 'react';
+import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
-const MajorProjects = () => {
-  const navigate = useNavigate();
-  const [filter, setFilter] = useState('all');
-
-  const filteredProjects = filter === 'all' 
-    ? projectData 
-    : projectData.filter(project => project.featured);
+const Projects = () => {
+  const projects = [
+    {
+      title: 'Chat App',
+      description: 'A real-time chat application built with React and Socket.io, featuring instant messaging, user authentication, and message history.',
+      image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80',
+      tags: ['React', 'Node.js', 'Socket.io', 'MongoDB','Express'],
+      github: 'https://github.com/itsNV/chat-app',
+      live: '/major-projects/chat-app',
+    },
+    {
+      title: 'Insight Institute',
+      description: 'An educational platform providing online courses, interactive learning materials, and student progress tracking.',
+      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80',
+      tags: ['React', 'Node.js', 'Express', 'Tailwind CSS','MongoDB'],
+      github: 'https://github.com/itsNV/Insight-Institute-An-EdTech-Platform',
+      live: '/major-projects/insight-institute',
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -21,7 +30,7 @@ const MajorProjects = () => {
         staggerChildren: 0.2,
       },
     },
-  };              
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -32,67 +41,41 @@ const MajorProjects = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto">
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          onClick={() => navigate('/')}
-          className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors mb-16"
-        >
-          <FaArrowLeftLong />
-          <span>Back to Home</span>
-        </motion.button>
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5" />
+        <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-500/5 to-transparent" />
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text">
-              My Projects
+              Featured Projects
             </span>
-          </h1>
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A collection of my work that showcases my skills and passion for building
-            modern web applications.
+            A collection of my most significant works and contributions
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center gap-4 mb-16"
-        >
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-full transition-all duration-300 ${
-              filter === 'all'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                : 'bg-white/5 text-gray-300 hover:bg-white/10'
-            }`}
-          >
-            All Projects
-          </button>
-         
-        </motion.div>
-
-        {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
-          {filteredProjects.map((project) => (
+          {projects.map((project, index) => (
             <motion.div
-              key={project.id}
+              key={project.title}
               variants={itemVariants}
               className="glass-card group relative overflow-hidden"
             >
@@ -101,31 +84,26 @@ const MajorProjects = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10" />
                 <img
                   src={project.image}
-                  alt={project.name}
+                  alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 z-20">
-                  <span className="text-sm font-medium text-gray-300 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
-                    {project.id}
-                  </span>
-                </div>
               </div>
 
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="text-2xl font-semibold mb-2 bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text">
-                  {project.name}
+                  {project.title}
                 </h3>
                 <p className="text-gray-400 mb-4">{project.description}</p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
                     <span
-                      key={tech}
+                      key={tag}
                       className="px-3 py-1 text-sm bg-white/5 rounded-full text-gray-300"
                     >
-                      {tech}
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -140,15 +118,13 @@ const MajorProjects = () => {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
                   >
-                    <FaGithub className="text-lg" />
+                    <FiGithub className="text-lg" />
                     <span>Source Code</span>
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={project.live}
                     className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
                   >
                     <FiExternalLink className="text-lg" />
@@ -160,8 +136,8 @@ const MajorProjects = () => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default MajorProjects;
+export default Projects; 

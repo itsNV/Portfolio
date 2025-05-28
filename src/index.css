@@ -1,10 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --gradient-bg: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+}
 
+/* Base styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
 
+/* Star animation */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 5s infinite;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.5);
+  }
+}
+
+/* Animated background */
+.main {
+  position: relative;
+  overflow: hidden;
+}
+
+.main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15), transparent 60%);
+  animation: pulse 8s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(14, 165, 233, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(14, 165, 233, 0.8); }
+}
+
+/* Enhanced text styles */
+.name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  background: var(--gradient-bg);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glow 3s ease-in-out infinite;
+}
+
+.description {
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Button effects */
+.project_btn {
+  background: var(--gradient-bg);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+}
+
+.project_btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.project_btn:hover::before {
+  left: 100%;
+}
+
+/* Skill section enhancements */
+.skill_section {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.skill_section:hover {
+  transform: translateY(-5px);
+}
+
+.skill_name {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill_name:hover {
+  color: #0ea5e9;
+  transform: scale(1.05);
+}
+
+/* Project card effects */
+.major_project {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.major_project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Entry animation enhancement */
+.entry_animation {
+  animation: fadeInScale 1.5s ease-out;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Contact section hover effects */
+.contact_img {
+  transition: transform 0.3s ease;
+}
+
+.contact_img:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Responsive styles */
 @media screen and (max-width:850px) {
     .navItem{
         display: none;
@@ -12,25 +190,19 @@
 
     .main{
         width: 100vw;
-        /* align-items: center; */
         margin-left: 30px;
-        
     }
 
     #intro{
         display: flex;
-        
     }
 
     .name{
-        /* font-size: larger */
         width: 92vw;
-        font-size: 5rem;
-        
+        font-size: 3.5rem;
     }
 
     .description{
-        /* font-size: small; */
         width: 92vw;
     }
 
@@ -47,11 +219,10 @@
     }
 
     .skill_section{
-        /* margin-left: 10px; */
         justify-self: center;
         gap: 20px;
         width: 70%;
-        
+        padding: 1.5rem;
     }
 
     .skill_subsection{
@@ -62,13 +233,11 @@
     .skill_name{
         flex-direction: column;
         justify-self: center;
-        
     }
 
     .skill_divide{
         display: flex;
         justify-self: center;
-       
     }
 
     #contact{
@@ -83,7 +252,6 @@
         align-items: center;
     }
 
-
     .projects{
         grid-auto-columns: 1;
         align-items: center;
@@ -93,7 +261,6 @@
 
     .three_dot{
         opacity: 100;
-        
     }
 
     .navbar{
@@ -116,7 +283,32 @@
         height: 100vh;
         font-size: 4rem;
         padding-left: 20px;
-        
-        
     }
+}
+
+/* Scroll animations */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
