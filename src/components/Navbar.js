@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 
 const Navbar = ({ navState }) => {
   
@@ -10,11 +10,19 @@ const Navbar = ({ navState }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate()
+
+
+  const handleClickNisarg = () =>{
+    navigate('/')
+    setNavState('homepage')
+  }
 
   useEffect(() => {
     setNavState(navState);
     console.log('navstate', navstate);
   }, [navState]);
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -50,7 +58,7 @@ const Navbar = ({ navState }) => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  ${
         scrolled ? 'bg-background/95 backdrop-blur-md shadow-glow' : 'bg-transparent'
       }`}
     >
@@ -61,14 +69,18 @@ const Navbar = ({ navState }) => {
             whileHover={{ scale: 1.05 }}
             className="flex-shrink-0"
           >
-            <Link to="/" className="text-2xl font-bold text-gradient-primary">
+            <button
+              onClick={handleClickNisarg}
+              className="text-2xl font-bold text-gradient-primary">
               Nisarg Patel
-            </Link>
+            </button>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
+
+              {/* homepage navigation */}
               { (navstate == 'homepage') && navItemshomepage.map((item) => (
                 <motion.div
                   key={item.name}
@@ -88,6 +100,7 @@ const Navbar = ({ navState }) => {
                 </motion.div>
               ))}
 
+              {/* data analyst page navigation */}
 { (navstate == 'data-analyst') && navItemsDA.map((item) => (
                 <motion.div
                   key={item.name}
@@ -99,14 +112,14 @@ const Navbar = ({ navState }) => {
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                       isActive(item.path)
                         ? 'text-primary bg-primary/20'
-                        : 'text-text-light hover:text-primary hover:bg-primary/10'
+                        : 'text-white hover:text-primary hover:bg-primary/10'
                     }`}
                   >
                     {item.name}
                   </AnchorLink>
                 </motion.div>
 ))}
-              
+              {/* mern stack page navigation */}
               { (navstate == 'mern-stack') && navItemshMS.map((item) => (
                 <motion.div
                   key={item.name}
@@ -118,7 +131,7 @@ const Navbar = ({ navState }) => {
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                       isActive(item.path)
                         ? 'text-primary bg-primary/20'
-                        : 'text-text-light hover:text-primary hover:bg-primary/10'
+                        : 'text-white hover:text-primary hover:bg-primary/10'
                     }`}
                   >
                     {item.name}

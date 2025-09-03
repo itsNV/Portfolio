@@ -28,12 +28,12 @@ const MERNStack = ({setNavState}) => {
      
       
       {/* Intro Section */}
-      <section id='intro' className="py-20 px-4 relative">
+      <section id='intro' className="min-h-screen py-20 px-4 relative">
         <button type="button" onClick={handleBack} className='flex items-center gap-3 hover:text-primary-light mb-10 relative z-10 transition-colors duration-300'>
                   <ArrowBigLeft/>
           Back to Home</button>
         
-        <div className="max-w-4xl mx-auto text-center mt-20 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mt-32 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ const MERNStack = ({setNavState}) => {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gradient-primary">
               MERN Developer Path
             </h1>
-            <p className="text-xl text-text-light max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-text-light max-w-3xl mx-auto leading-relaxed mb-20">
               Building scalable, modern web applications with the MERN stack. 
               From concept to deployment, creating robust full-stack solutions that deliver exceptional user experiences.
             </p>
@@ -61,7 +61,7 @@ const MERNStack = ({setNavState}) => {
       </section>
 
       {/* Experience Timeline */}
-      <section id='experience'>
+      <section id='experience' className='min-h-screen py-20'>
       <Timeline 
         experiences={experiences}
         title="Experience"
@@ -72,7 +72,7 @@ const MERNStack = ({setNavState}) => {
     
 
       {/* Skills Section */}
-      <section id='skills'>
+      <section id='skills' className='min-h-screen py-20'>
         <SkillCards
           skills={skillGroups}
           title="Skills & Technologies"

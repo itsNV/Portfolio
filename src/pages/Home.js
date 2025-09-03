@@ -62,7 +62,7 @@ const Home = ({setNavState}) => {
       </section>
 
       {/* About Section */}
-      <section id='about' className="py-20  px-4">
+      <section id='about' className="min-h-screen py-20  px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -150,7 +150,7 @@ const Home = ({setNavState}) => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
+      <section id="contact" className="min-h-screen py-20 px-4">
         <div className="max-w-4xl mx-auto ">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -29,7 +29,7 @@ const DataAnalyst = ({setNavState}) => {
 
       
       {/* Intro Section */}
-      <section id='intro' className="py-20 px-4 relative"> 
+      <section id='intro' className="min-h-screen py-20 px-4 relative"> 
         <button type="button" onClick={handleBack} className='flex items-center gap-3 hover:text-primary-light mb-10 relative z-10 transition-colors duration-300'>
                   <ArrowBigLeft/>
           Back to Home</button>
@@ -62,7 +62,7 @@ const DataAnalyst = ({setNavState}) => {
       </section>
 
       {/* Experience Stepper */}
-      <section id='experience'>
+      <section id='experience' className='min-h-screen py-20'>
       <Stepper 
         steps={journeySteps}
         title="Experience"
@@ -71,7 +71,7 @@ const DataAnalyst = ({setNavState}) => {
     </section>
 
       {/* certification Section */}
-      <section id='certification' className="py-20 px-4">
+      <section id='certification' className="min-h-screen py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -113,7 +113,7 @@ const DataAnalyst = ({setNavState}) => {
       </section>
 
       {/* Skills Section */}
-      <section id='skills'>
+      <section id='skills' className='min-h-screen py-20'>
       <SkillCards 
         skills={skillGroups}
         title="Skills"
