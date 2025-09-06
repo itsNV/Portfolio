@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { Link, useLocation,useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 
 const Navbar = ({ navState }) => {
   
@@ -21,7 +21,8 @@ const Navbar = ({ navState }) => {
   useEffect(() => {
     setNavState(navState);
     console.log('navstate', navstate);
-  }, [navState]);
+    console.log('Isopen', isOpen);
+  }, [navState,isOpen]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -160,21 +161,44 @@ const Navbar = ({ navState }) => {
         animate={isOpen ? 'open' : 'closed'}
         variants={{
           open: { opacity: 1, height: 'auto' },
-          closed: { opacity: 0, height: 0 }
+          closed: { display: 'none' },
         }}
         transition={{ duration: 0.3 }}
-        className="md:hidden bg-card/95 backdrop-blur-md border-t border-border"
+        className="md:hidden sm:hidden  bg-card/95 backdrop-blur-md border-t border-border"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {navItemshomepage.map((item) => (
+
+          {/* Mobile homepage navigation */}
+          { (navstate == 'homepage') && navItemshomepage.map((item) => (
+            <motion.div
+              key={item.name}
+              whileHover={{ x: 10 }}
+              whiletap={{ scale: 0.95 }}
+            >
+             
+              <AnchorLink
+                href={item.path}
+                className={` block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+                  isActive(item.path)
+                    ? 'text-primary bg-primary/20'
+                    : 'text-text-light hover:text-primary hover:bg-primary/10'
+                }`}
+              >
+                {item.name}
+              </AnchorLink>
+             
+            </motion.div>
+          ))}
+
+          {/* Mobile data analyst page navigation */}
+          { (navstate == 'data-analyst') && navItemsDA.map((item) => (
             <motion.div
               key={item.name}
               whileHover={{ x: 10 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link
-                to={item.path}
-                onClick={() => setIsOpen(false)}
+              <AnchorLink
+                href={item.path}
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                   isActive(item.path)
                     ? 'text-primary bg-primary/20'
@@ -182,7 +206,28 @@ const Navbar = ({ navState }) => {
                 }`}
               >
                 {item.name}
-              </Link>
+              </AnchorLink>
+            </motion.div>
+          ))}
+
+
+          {/* Mobile mern stack page navigation */}
+          { (navstate == 'mern-stack') && navItemshMS.map((item) => (
+            <motion.div
+              key={item.name}
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnchorLink
+                href={item.path}
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+                  isActive(item.path)
+                    ? 'text-primary bg-primary/20'
+                    : 'text-text-light hover:text-primary hover:bg-primary/10'
+                }`}
+              >
+                {item.name}
+              </AnchorLink>
             </motion.div>
           ))}
         </div>

@@ -28,7 +28,7 @@ const Home = ({setNavState}) => {
             Hi, I am Nisarg Patel
             </h1>
             <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto leading-relaxed">
-            Aspiring Data Analyst with hands-on MERN stack skills and 4 months of internship experience in building modern web applications. Passionate about turning data into actionable insights.
+            Aspiring Data Analyst with foundational skills in data processing, visualization, and analysis. Completed a 4-month internship gaining hands-on experience in modern web applications and eager to turn data into actionable business insights.
             </p>
           </motion.div>
 
